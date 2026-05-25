@@ -29,6 +29,8 @@ src/
 └── assets/fonts/         # Atkinson Hyperlegible (local woff)
 public/                   # Static assets (favicon, CNAME — DO NOT delete CNAME)
 .github/workflows/deploy.yml
+.claude/                  # Project-scoped slash-commands + skills (OpenSpec opsx)
+openspec/                 # OpenSpec config, specs, changes (spec-driven workflow)
 ```
 
 ## Content: blog posts
@@ -129,7 +131,6 @@ Flow: `/opsx:propose <kebab-name>` → `/opsx:apply <name>` → `/opsx:archive <
 - **Never commit/push without explicit ask** (global default). Push to `main` = production deploy. No preview env.
 - **Commit message style** (match existing log): imperative, capitalized first word, no conventional-commits prefix. e.g. "Fix LinkedIn URL to correct profile" — not "fix: linkedin url".
 - **No secrets in the repo.** GA ID is the only public ID currently committed.
-- **`README.md`** is still the unmodified Astro starter. Replace it the first time we want a real README — don't keep patching the template.
 
 ## Changelogs
 
