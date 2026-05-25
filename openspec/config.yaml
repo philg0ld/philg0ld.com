@@ -1,0 +1,30 @@
+schema: spec-driven
+
+context: |
+  Project: philg0ld.com — personal blog by Phil Goldman.
+  Stack: Astro 6 + MDX, GitHub Pages, Node 22, TypeScript strict.
+  Content: single `blog` collection at src/content/blog/ with Zod-typed frontmatter
+  (title, description, pubDate, updatedDate?, heroImage?, tags[], draft).
+  Domain: data engineering, Databricks, Azure, AI/ML, Claude Code workflows.
+  Voice anchor: kau.sh — personal narrative openings, problem-first technical
+  exposition, concrete examples, first-person, no emojis (global rule).
+  Deploy: push to main triggers GitHub Actions → Pages. No preview env;
+  main is production.
+  Commits: imperative, capitalized first word, no conventional-commits prefix.
+  Custom domain via public/CNAME — must not be modified unless explicitly
+  changing domain.
+  See AGENTS.md at repo root for full conventions and authoring workflow.
+
+rules:
+  proposal:
+    - Keep proposals under 400 words
+    - State the user-visible outcome in one sentence at the top
+    - Always include a "Non-goals" section
+  design:
+    - Prefer reusing existing Astro starter components; flag deviations explicitly
+    - Note any new runtime dependencies and justify each
+    - Call out anything that would change build output size or Lighthouse score
+  tasks:
+    - Each task is one focused change with a verifiable check
+    - Include `npm run build` as the final verification step
+    - Note any CHANGELOG.md entry the task should add (Keep a Changelog format)

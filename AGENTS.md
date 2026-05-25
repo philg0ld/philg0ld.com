@@ -107,6 +107,23 @@ Built on the Astro Blog Starter (Bear Blog lineage). Defaults:
 
 If we later add a comment system, newsletter, or auth: use env vars + GH Secrets, never inline.
 
+## OpenSpec workflow
+
+This repo uses [OpenSpec](https://github.com/Fission-AI/OpenSpec) for spec-driven changes. Config in `openspec/config.yaml`; slash-commands under `.claude/commands/opsx/`.
+
+**Reach for `/opsx:propose`** when the work is:
+- A new feature (search, comments, newsletter, tag pages, dark mode, post series)
+- A structural change (new content collection, layout overhaul, route redirects, i18n)
+- An integration (analytics swap, CMS, image CDN, third-party widget)
+
+**Skip OpenSpec — just do it** for:
+- Writing or editing blog posts
+- Dependency bumps, copy/style/typo fixes
+- Single-component tweaks with no behavior change
+- README, CHANGELOG, or AGENTS.md edits
+
+Flow: `/opsx:propose <kebab-name>` → `/opsx:apply <name>` → `/opsx:archive <name>`. Use `/opsx:explore` to think through an idea without writing code.
+
 ## Guardrails
 
 - **Never commit/push without explicit ask** (global default). Push to `main` = production deploy. No preview env.
