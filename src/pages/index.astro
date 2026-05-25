@@ -1,25 +1,93 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 10);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			ul.post-list {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul.post-list li {
+				padding: 0.35em 0;
+			}
+			ul.post-list a {
+				display: flex;
+				align-items: baseline;
+				gap: 1em;
+				color: var(--color-ink);
+				text-decoration: none;
+			}
+			ul.post-list a:hover .title {
+				color: var(--color-accent);
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 3px;
+			}
+			ul.post-list .date {
+				color: var(--color-muted);
+				font-family: var(--font-mono);
+				font-size: 0.9em;
+				min-width: 5.5em;
+				flex-shrink: 0;
+			}
+			.intro {
+				margin-bottom: 3em;
+			}
+			section.recent h2 {
+				margin-bottom: 0.75em;
+			}
+			@media (max-width: 480px) {
+				ul.post-list a {
+					flex-wrap: wrap;
+					gap: 0.25em 0.75em;
+				}
+				ul.post-list .date {
+					min-width: 0;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>Phil Goldman</h1>
-			<p>
-				Data Engineer. Writing about Databricks, Azure, AI/ML, and building with Claude Code.
-			</p>
-			<p>
-				<a href="/blog/">Read the blog &rarr;</a>
-			</p>
+			<div class="intro">
+				<h1>Phil Goldman</h1>
+				<p>
+					Data Engineer. Writing about Databricks, Azure, AI/ML, and building with Claude Code.
+				</p>
+			</div>
+			<section class="recent">
+				<h2>Recent writing</h2>
+				<ul class="post-list">
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<span class="date">
+										<FormattedDate date={post.data.pubDate} format="year-month" />
+									</span>
+									<span class="title">{post.data.title}</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>

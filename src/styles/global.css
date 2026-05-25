@@ -1,36 +1,45 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+  Base styles for philg0ld.com. Originally derived from Bear Blog
+  (https://github.com/HermanMartinus/bearblog/, MIT) — reworked into a
+  token-driven, kau.sh-family text-forward theme.
+*/
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	/* Accent: desaturated blue. Picked for restrained contrast on warm off-white. */
+	--color-accent: #2e5c8a;
+	--color-bg: #fafaf7;
+	--color-ink: #1a1a1a;
+	--color-muted: #6b6b6b;
+	--color-code-bg: #f0ede5;
+	--color-rule: #e6e2d6;
+
+	--font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+	--text-base: 19px;
+	--text-h1: 2.2em;
+	--text-h2: 1.75em;
+	--text-h3: 1.4em;
+	--text-h4: 1.2em;
+	--text-h5: 1.05em;
+
+	--prose-max-width: 700px;
+	--space-prose: 1em;
 }
+
 body {
 	font-family: var(--font-atkinson);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background: var(--color-bg);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
+	color: var(--color-ink);
+	font-size: var(--text-base);
+	line-height: 1.6;
 }
 main {
-	width: 720px;
+	width: var(--prose-max-width);
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
@@ -42,39 +51,42 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+	color: var(--color-ink);
+	line-height: 1.25;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: var(--text-h1);
 }
 h2 {
-	font-size: 2.441em;
+	font-size: var(--text-h2);
 }
 h3 {
-	font-size: 1.953em;
+	font-size: var(--text-h3);
 }
 h4 {
-	font-size: 1.563em;
+	font-size: var(--text-h4);
 }
 h5 {
-	font-size: 1.25em;
+	font-size: var(--text-h5);
 }
 strong,
 b {
 	font-weight: 700;
 }
 a {
-	color: var(--accent);
+	color: var(--color-accent);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
 }
 a:hover {
-	color: var(--accent);
+	text-decoration-thickness: 2px;
 }
 p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.25em;
 }
 textarea {
 	width: 100%;
@@ -89,29 +101,37 @@ table {
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	border-radius: 4px;
 }
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	background-color: var(--color-code-bg);
+	border-radius: 3px;
+	font-family: var(--font-mono);
+	font-size: 0.92em;
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+	padding: 1em;
+	border-radius: 4px;
+	border: 1px solid var(--color-rule);
+	font-family: var(--font-mono);
+	font-size: 0.9em;
+	line-height: 1.5;
+	overflow-x: auto;
 }
 pre > code {
 	all: unset;
+	font-family: var(--font-mono);
 }
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid var(--color-accent);
 	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+	margin: 1em 0;
+	color: var(--color-ink);
 }
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--color-rule);
 }
 @media (max-width: 720px) {
 	body {
@@ -130,12 +150,8 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
