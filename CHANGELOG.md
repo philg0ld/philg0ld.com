@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.0.1] — 2026-05-25
+
+First tagged release. Site is live at [philg0ld.com](https://philg0ld.com).
+
 - Added: About page (`/about/`) with bio, link sections, and colophon
 - Added: Search page (`/search/`) with Pagefind static full-text search; build script now runs `pagefind --site dist`
 - Added: Topics tag cloud and year-grouped post list on `/blog/` (e.g. `#2026`, `#2025`)
