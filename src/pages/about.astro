@@ -1,0 +1,93 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`About — ${SITE_TITLE}`} description="About Phil Goldman — data engineer working with Databricks, Azure, and AI/ML." />
+		<style>
+			.about h2 {
+				margin-top: 2em;
+				margin-bottom: 0.5em;
+			}
+			.about ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.about ul li {
+				padding: 0.15em 0;
+			}
+			.about .lede {
+				font-size: 1.08em;
+			}
+			.about .colophon {
+				color: var(--color-muted);
+				font-size: 0.95em;
+				margin-top: 3em;
+				padding-top: 1.5em;
+				border-top: 1px solid var(--color-rule);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="about">
+				<h1>About</h1>
+
+				<p class="lede">
+					I'm <strong>Phil Goldman</strong> — a data engineer building data platforms on
+					Databricks and Azure, with a growing focus on AI-augmented development using Claude
+					Code.
+				</p>
+
+				<p>
+					Day to day I work on data ingestion, transformation, and quality across Databricks +
+					Delta Lake, with adjacent work in Hightouch, Azure, and event pipelines. I write
+					here about the patterns that survive contact with production, the agents and tools
+					that have actually changed how I work, and the occasional thing I wish someone had
+					written for me a year earlier.
+				</p>
+
+				<h2>#work</h2>
+				<ul>
+					<li>Data Engineer working across Databricks, Azure, and modern data-stack tooling.</li>
+					<li>Active focus areas: data quality, governance, AI-augmented engineering workflows.</li>
+					<li>Talks &amp; writing: aiming for one meetup/conference talk and a handful of
+						technical articles each year.</li>
+				</ul>
+
+				<h2>#writing</h2>
+				<ul>
+					<li><a href="/blog/">All posts</a></li>
+					<li><a href="/rss.xml">RSS feed</a></li>
+				</ul>
+
+				<h2>#elsewhere</h2>
+				<ul>
+					<li><a href="https://github.com/philg0ld" target="_blank" rel="noopener">GitHub</a></li>
+					<li>
+						<a href="https://www.linkedin.com/in/philg0ld/" target="_blank" rel="noopener">LinkedIn</a>
+					</li>
+					<li><a href="mailto:phil@goldmans.us">Email</a></li>
+				</ul>
+
+				<p class="colophon">
+					This site is built with <a href="https://astro.build/">Astro</a>, deployed to GitHub
+					Pages, with on-site search powered by <a href="https://pagefind.app/">Pagefind</a>.
+					Body text is set in <a
+						href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>. The
+					theme is hand-built and loosely modeled on Kaushik Gopal's <a
+						href="https://kau.sh/">kau.sh</a>. Source on
+					<a href="https://github.com/philg0ld/philg0ld.com">GitHub</a>.
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

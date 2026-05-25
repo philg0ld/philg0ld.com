@@ -1,0 +1,54 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Search — ${SITE_TITLE}`} description="Full-text search across all posts on philg0ld.com." />
+		<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+		<style>
+			#search {
+				margin-top: 1.5em;
+			}
+			:root {
+				--pagefind-ui-primary: var(--color-accent);
+				--pagefind-ui-text: var(--color-ink);
+				--pagefind-ui-background: var(--color-bg);
+				--pagefind-ui-border: var(--color-rule);
+				--pagefind-ui-tag: var(--color-code-bg);
+				--pagefind-ui-border-radius: 4px;
+				--pagefind-ui-border-width: 1px;
+				--pagefind-ui-font: var(--font-atkinson);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Search</h1>
+			<p>Full-text search across all posts.</p>
+			<div id="search"></div>
+		</main>
+		<Footer />
+		<script type="module">
+			import { PagefindUI } from "/pagefind/pagefind-ui.js";
+
+			const ui = new PagefindUI({
+				element: "#search",
+				showSubResults: true,
+				showImages: false,
+			});
+
+			// Honor ?q=… on first load (used by Topics tag links on /blog/).
+			const params = new URLSearchParams(window.location.search);
+			const q = params.get("q");
+			if (q) {
+				ui.triggerSearch(q);
+			}
+		</script>
+	</body>
+</html>

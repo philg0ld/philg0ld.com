@@ -50,4 +50,4 @@
 ## 8. Changelog & commit
 
 - [x] 8.1 Add a `## [Unreleased]` line to `CHANGELOG.md`: `- Changed: Applied kau.sh-family theme — narrow centered prose column, restrained palette, single-column blog index with YYYY-MM date prefix, hashtag-styled tags, lighter Shiki code theme`.
-- [ ] 8.2 Stage the files explicitly (no `git add -A`). Commit with imperative single-line message, e.g. `Apply kau.sh-family theme to site`. Do not push — wait for explicit ask. *(Paused per global rule: never commit unless explicitly asked.)*
+- [x] 8.2 Stage the files explicitly (no `git add -A`). Commit with imperative single-line message, e.g. `Apply kau.sh-family theme to site`. Do not push — wait for explicit ask. *(Committed as `a63768f`. Not pushed.)*

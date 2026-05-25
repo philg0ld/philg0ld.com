@@ -9,13 +9,47 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog'))
 	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Tag cloud with counts, sorted by count desc then name asc.
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+	for (const tag of post.data.tags ?? []) {
+		tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+	}
+}
+const topics = [...tagCounts.entries()].sort((a, b) =>
+	b[1] - a[1] || a[0].localeCompare(b[0]),
+);
+
+// Group posts by year (newest first).
+type Post = (typeof posts)[number];
+const byYear = new Map<number, Post[]>();
+for (const post of posts) {
+	const year = post.data.pubDate.getUTCFullYear();
+	if (!byYear.has(year)) byYear.set(year, []);
+	byYear.get(year)!.push(post);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Writing — ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
+			.year-heading {
+				margin-top: 2.5em;
+				margin-bottom: 0.5em;
+				color: var(--color-muted);
+				font-family: var(--font-mono);
+				font-size: 1.2em;
+				font-weight: 700;
+			}
+			.year-heading::before {
+				content: '#';
+				color: var(--color-muted);
+				margin-right: 0.15em;
+			}
 			ul.post-list {
 				list-style: none;
 				margin: 0;
@@ -47,6 +81,34 @@ const posts = (await getCollection('blog'))
 			ul.post-list .title {
 				color: var(--color-ink);
 			}
+			.topics {
+				margin-bottom: 2em;
+			}
+			.topics ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5em 1em;
+			}
+			.topics li {
+				font-size: 0.95em;
+			}
+			.topics a {
+				color: var(--color-ink);
+				text-decoration: none;
+			}
+			.topics a:hover {
+				color: var(--color-accent);
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 3px;
+			}
+			.topics .count {
+				color: var(--color-muted);
+				font-size: 0.85em;
+			}
 			@media (max-width: 480px) {
 				ul.post-list a {
 					flex-wrap: wrap;
@@ -62,20 +124,39 @@ const posts = (await getCollection('blog'))
 		<Header />
 		<main>
 			<h1>Writing</h1>
-			<ul class="post-list">
-				{
-					posts.map((post) => (
-						<li>
-							<a href={`/blog/${post.id}/`}>
-								<span class="date">
-									<FormattedDate date={post.data.pubDate} format="year-month" />
-								</span>
-								<span class="title">{post.data.title}</span>
-							</a>
-						</li>
-					))
-				}
-			</ul>
+
+			{topics.length > 0 && (
+				<section class="topics">
+					<h2>Topics</h2>
+					<ul>
+						{topics.map(([tag, count]) => (
+							<li>
+								<a href={`/search/?q=${encodeURIComponent(tag)}`}>
+									{tag} <span class="count">({count})</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+
+			{years.map((year) => (
+				<section>
+					<h2 class="year-heading">{year}</h2>
+					<ul class="post-list">
+						{byYear.get(year)!.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<span class="date">
+										<FormattedDate date={post.data.pubDate} format="year-month" />
+									</span>
+									<span class="title">{post.data.title}</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			))}
 		</main>
 		<Footer />
 	</body>
