@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.0.2] — 2026-05-25
+
+Homepage rework to better match the kau.sh-family structure.
+
 - Changed: Reworked homepage to a kau.sh-shaped layout — two-paragraph intro (no big H1), Topics tag cloud, small-caps "Writing" eyebrow, full post list (no cap)
 - Changed: `/blog/` Topics cloud restyled to use the new bordered ALL-CAPS pill style
 - Changed: Header nav now constrained to the same width as the prose column (wordmark + links align with main content instead of viewport edges)
