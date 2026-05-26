@@ -34,9 +34,5 @@
 
 ## 6. Changelog & commit
 
-- [ ] 6.1 Add `## [Unreleased]` entries to `CHANGELOG.md`:
-  - `- Changed: Reworked homepage to a kau.sh-shaped layout — two-paragraph intro (no big H1), Topics tag cloud, small-caps "Writing" eyebrow, full post list (no cap)`
-  - `- Added: Reusable .eyebrow and .tag-pill classes in global.css`
-  - `- Added: Shared PostList component used by / and /blog/`
-  - `- Changed: /blog/ Topics cloud restyled to use the new .tag-pill (bordered, ALL-CAPS)`
-- [ ] 6.2 Stage explicit files (no `git add -A`). Commit with imperative message, e.g. `Rework homepage to kau.sh-shaped layout`. Do not push — wait for explicit ask. *(Paused per global rule: never commit unless explicitly asked.)*
+- [x] 6.1 Added `## [Unreleased]` entries to `CHANGELOG.md` (homepage rework, restyled pill, header nav constraint, `.eyebrow`/`.tag-pill` classes, `PostList` component).
+- [x] 6.2 Committed as `f07687c Rework homepage to kau.sh-shaped layout`. Pushed as part of the v0.0.2 release motion.
