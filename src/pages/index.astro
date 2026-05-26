@@ -2,14 +2,23 @@
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import PostList from '../components/PostList.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const posts = (await getCollection('blog'))
 	.filter((post) => !post.data.draft)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 10);
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+	for (const tag of post.data.tags ?? []) {
+		tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+	}
+}
+const topics = [...tagCounts.entries()].sort((a, b) =>
+	b[1] - a[1] || a[0].localeCompare(b[0]),
+);
 ---
 
 <!doctype html>
@@ -17,48 +26,16 @@ const posts = (await getCollection('blog'))
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			ul.post-list {
+			.intro p {
+				margin-bottom: 1.25em;
+			}
+			.topics ul {
 				list-style: none;
-				margin: 0;
 				padding: 0;
-			}
-			ul.post-list li {
-				padding: 0.35em 0;
-			}
-			ul.post-list a {
+				margin: 0;
 				display: flex;
-				align-items: baseline;
-				gap: 1em;
-				color: var(--color-ink);
-				text-decoration: none;
-			}
-			ul.post-list a:hover .title {
-				color: var(--color-accent);
-				text-decoration: underline;
-				text-decoration-thickness: 1px;
-				text-underline-offset: 3px;
-			}
-			ul.post-list .date {
-				color: var(--color-muted);
-				font-family: var(--font-mono);
-				font-size: 0.9em;
-				min-width: 5.5em;
-				flex-shrink: 0;
-			}
-			.intro {
-				margin-bottom: 3em;
-			}
-			section.recent h2 {
-				margin-bottom: 0.75em;
-			}
-			@media (max-width: 480px) {
-				ul.post-list a {
-					flex-wrap: wrap;
-					gap: 0.25em 0.75em;
-				}
-				ul.post-list .date {
-					min-width: 0;
-				}
+				flex-wrap: wrap;
+				gap: 0.5em 0.5em;
 			}
 		</style>
 	</head>
@@ -66,28 +43,37 @@ const posts = (await getCollection('blog'))
 		<Header />
 		<main>
 			<div class="intro">
-				<h1>Phil Goldman</h1>
 				<p>
-					Data Engineer. Writing about Databricks, Azure, AI/ML, and building with Claude Code.
+					Hi, I'm Phil Goldman. I'm a data engineer building data platforms on
+					Databricks and Azure, with a growing focus on AI-augmented development using
+					Claude Code.
+				</p>
+				<p>
+					Day-to-day I work on data ingestion, transformation, and quality across
+					Delta Lake and the modern data stack. I write here about the patterns that
+					survive contact with production, the agents and tools that have actually
+					changed how I work, and the occasional thing I wish someone had written for
+					me a year earlier.
 				</p>
 			</div>
-			<section class="recent">
-				<h2>Recent writing</h2>
-				<ul class="post-list">
-					{
-						posts.map((post) => (
+
+			{topics.length > 0 && (
+				<section class="topics">
+					<h2 class="eyebrow">Topics</h2>
+					<ul>
+						{topics.map(([tag, count]) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
-									<span class="date">
-										<FormattedDate date={post.data.pubDate} format="year-month" />
-									</span>
-									<span class="title">{post.data.title}</span>
+								<a class="tag-pill" href={`/search/?q=${encodeURIComponent(tag)}`}>
+									{tag} <span class="count">{count}</span>
 								</a>
 							</li>
-						))
-					}
-				</ul>
-			</section>
+						))}
+					</ul>
+				</section>
+			)}
+
+			<h2 class="eyebrow">Writing</h2>
+			<PostList posts={posts} />
 		</main>
 		<Footer />
 	</body>
