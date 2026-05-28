@@ -130,6 +130,32 @@ blockquote {
 	margin: 1em 0;
 	color: var(--color-ink);
 }
+
+/* Callouts: GFM/Obsidian `> [!tip] Title` syntax, transformed by
+   rehype-callouts.mjs into <blockquote class="callout callout-tip">. */
+.callout {
+	border-left-width: 4px;
+	border-left-style: solid;
+	padding: 0.75em 1em;
+	margin: 1.25em 0;
+	background: var(--color-code-bg);
+	border-radius: 4px;
+	color: var(--color-ink);
+}
+.callout-title {
+	font-weight: 700;
+	margin-bottom: 0.4em;
+	color: var(--color-ink);
+}
+.callout > :last-child {
+	margin-bottom: 0;
+}
+.callout-note      { border-left-color: var(--color-accent); }
+.callout-tip       { border-left-color: #16A34A; }
+.callout-info      { border-left-color: #0284C7; }
+.callout-important { border-left-color: #9333EA; }
+.callout-warning   { border-left-color: #CA8A04; }
+.callout-caution   { border-left-color: #DC2626; }
 hr {
 	border: none;
 	border-top: 1px solid var(--color-rule);
@@ -146,12 +172,12 @@ hr {
 /* Serif heading family for blog prose headings and the site-title. */
 .prose h1 {
 	font-family: var(--font-serif), Georgia, serif;
-	font-weight: 700;
+	font-weight: 500;
 	font-style: italic;
 }
 .prose h2 {
 	font-family: var(--font-serif), Georgia, serif;
-	font-weight: 700;
+	font-weight: 600;
 	font-style: italic;
 	position: relative;
 }

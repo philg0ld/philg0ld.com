@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Changed: Related-posts list (`.related ul`) uses kau.sh-style left margin (`0.9em`) instead of bullet-padding indent for tighter alignment under the eyebrow
 - Changed: Related-posts `<li>` swapped padding (`0.2em 0`) for `margin-top: 0.25em` to match kau.sh's tighter row rhythm
 - Changed: Site header is now sticky (`position: sticky; top: 0; z-index: 40`) with an opaque `--color-bg` background so the nav stays visible while scrolling
+- Added: `src/lib/rehype-callouts.mjs` — in-repo rehype plugin that transforms blockquotes starting with `[!type] Title` (Obsidian / GFM syntax) into `<blockquote class="callout callout-{type}">` with a styled title row. Recognised types: note, tip, important, warning, caution, info
+- Added: Source Serif 4 weights 500 and 600 italic to the font config
+- Changed: `.prose h1` from italic 700 to italic 500; `.prose h2` from italic 700 to italic 600 — lighter heading rhythm closer to kau.sh
 
 ## [0.0.2] — 2026-05-25
 
