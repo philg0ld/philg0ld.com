@@ -160,11 +160,3 @@ Skip: typos, comment-only edits, internal refactors with no observable effect.
 On release: rename `## [Unreleased]` to `## [X.Y.Z] — YYYY-MM-DD` and add a fresh `## [Unreleased]` above it.
 
 Standard: [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) · [SemVer 2.0](https://semver.org/spec/v2.0.0.html)
-
-## Related
-
-- Parent area: [`../AGENTS.md`](../AGENTS.md)
-- Vault root: vault-wide conventions in `/AGENTS.md`
-- Voice reference: [kau.sh](https://kau.sh/blog/)
-- `[[2026-02-26 0702 Agents for Posts and Articles]]` — content automation idea
-- `[[2026-03-07 0803 Content Creation]]` — content-creator skill concept
