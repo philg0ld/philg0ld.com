@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Added: Interactive `##` section anchors on H2 headings (hover hot-orange; click copies the section URL and flashes a checkmark) via in-repo `rehype-heading-anchors.mjs`
 - Changed: Post-page tail order is now body → tags → share-band → related-posts (matches kau.sh post layout)
 - Fixed: Side-note label now uses the sequential number from the body superscript instead of the raw footnote ID — named footnotes like `[^kaush]` previously rendered as `kaush.` instead of `1.`
+- Changed: Hover on nav links, prose links, related-post links, and share icons now uses `--color-hot` orange and drops the underline — matches kau.sh's link signature
+- Changed: Section headings (`.prose h2`) now render in italic Source Serif 4 to share H1's typographic rhythm
 
 ## [0.0.2] — 2026-05-25
 

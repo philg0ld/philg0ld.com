@@ -80,7 +80,8 @@ a {
 	text-underline-offset: 2px;
 }
 a:hover {
-	text-decoration-thickness: 2px;
+	color: var(--color-hot);
+	text-decoration: none;
 }
 p {
 	margin-bottom: 1em;
@@ -151,7 +152,7 @@ hr {
 .prose h2 {
 	font-family: var(--font-serif), Georgia, serif;
 	font-weight: 700;
-	font-style: normal;
+	font-style: italic;
 	position: relative;
 }
 
