@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Changed: Hover on nav links, prose links, related-post links, and share icons now uses `--color-hot` orange and drops the underline — matches kau.sh's link signature
 - Changed: Section headings (`.prose h2`) now render in italic Source Serif 4 to share H1's typographic rhythm
 - Changed: Related-posts list (`.related ul`) uses kau.sh-style left margin (`0.9em`) instead of bullet-padding indent for tighter alignment under the eyebrow
+- Changed: Related-posts "You might also enjoy" heading now renders as the small-caps mono muted eyebrow (was bold Atkinson body-text size); the overriding `.related .eyebrow` rule was trimmed to just the margin reset so the global `.eyebrow` style wins
+- Changed: Related-posts `<li>` swapped padding (`0.2em 0`) for `margin-top: 0.25em` to match kau.sh's tighter row rhythm
 
 ## [0.0.2] — 2026-05-25
 
