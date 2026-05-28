@@ -5,10 +5,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { slug: string };
 
-const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, slug } = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <html lang="en">
@@ -26,7 +30,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
-				border-radius: 4px;
+				border-radius: 0;
 			}
 			.prose {
 				width: var(--prose-max-width);
@@ -60,6 +64,12 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 				display: inline-block;
 				color: var(--color-muted);
 				font-size: 0.9em;
+			}
+			.related-wrapper {
+				width: var(--prose-max-width);
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
 			}
 		</style>
 	</head>
@@ -95,7 +105,45 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 					)}
 				</div>
 			</article>
+			<ShareButtons url={url} title={title} />
+			<div class="related-wrapper">
+				<RelatedPosts currentSlug={slug} currentTags={tags ?? []} />
+			</div>
 		</main>
 		<Footer />
+		<script is:inline>
+			(() => {
+				const anchors = document.querySelectorAll('.heading-anchor');
+				anchors.forEach((a) => {
+					a.addEventListener('click', (e) => {
+						e.preventDefault();
+						const href = a.getAttribute('href') || '';
+						const url =
+							window.location.origin + window.location.pathname + href;
+						const reset = () => {
+							a.classList.remove('copied');
+						};
+						if (navigator.clipboard && navigator.clipboard.writeText) {
+							navigator.clipboard.writeText(url).then(
+								() => {
+									a.classList.add('copied');
+									setTimeout(reset, 1500);
+								},
+								() => {},
+							);
+						} else {
+							const t = document.createElement('textarea');
+							t.value = url;
+							document.body.appendChild(t);
+							t.select();
+							try { document.execCommand('copy'); } catch (_) {}
+							document.body.removeChild(t);
+							a.classList.add('copied');
+							setTimeout(reset, 1500);
+						}
+					});
+				});
+			})();
+		</script>
 	</body>
 </html>

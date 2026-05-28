@@ -5,7 +5,7 @@ pubDate: 'Sep 22 2025'
 tags: ['testing', 'code']
 ---
 
-A short post to look at how code blocks and lists render under the theme.
+A short post to look at how code blocks and lists render under the theme. Lists are deceptively load-bearing in technical writing[^lists]  — they're often where readers actually find the answer.
 
 ## Unordered list
 
@@ -55,3 +55,5 @@ npm run preview
 ```
 
 A trailing paragraph after the code blocks, to confirm spacing between fenced blocks and surrounding prose.
+
+[^lists]: There's a reason every well-loved README opens with a bullet list of features — they're scannable. Prose hides; lists declare.

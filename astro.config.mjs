@@ -4,6 +4,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
+import rehypeHeadingAnchors from './src/lib/rehype-heading-anchors.mjs';
+import rehypeSidenotes from './src/lib/rehype-sidenotes.mjs';
+
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://philg0ld.com',
@@ -12,6 +15,7 @@ export default defineConfig({
 		shikiConfig: {
 			theme: 'github-light',
 		},
+		rehypePlugins: [rehypeSidenotes, rehypeHeadingAnchors],
 	},
 	fonts: [
 		{
@@ -35,6 +39,14 @@ export default defineConfig({
 					},
 				],
 			},
+		},
+		{
+			provider: fontProviders.google(),
+			name: 'Source Serif 4',
+			cssVariable: '--font-serif',
+			fallbacks: ['Georgia', 'serif'],
+			weights: [400, 700],
+			styles: ['normal', 'italic'],
 		},
 	],
 });

@@ -1,0 +1,83 @@
+---
+type Props = {
+	url: string;
+	title: string;
+};
+
+const { url, title } = Astro.props;
+
+const u = encodeURIComponent(url);
+const t = encodeURIComponent(title);
+
+const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${u}`;
+const xHref = `https://twitter.com/intent/tweet?text=${t}&url=${u}&via=philg0ld`;
+const blueskyHref = `https://bsky.app/intent/compose?text=${encodeURIComponent(`${title} ${url}`)}`;
+const githubHref = 'https://github.com/philg0ld';
+---
+
+<div class="share-band">
+	<a
+		href={linkedinHref}
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="Share on LinkedIn"
+	>
+		<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+			<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.99 0 1.78-.77 1.78-1.72V1.72C24 .77 23.21 0 22.22 0z"/>
+		</svg>
+	</a>
+	<a
+		href={xHref}
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="Share on X"
+	>
+		<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+			<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+		</svg>
+	</a>
+	<a
+		href={blueskyHref}
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="Share on Bluesky"
+	>
+		<svg viewBox="0 0 600 530" width="20" height="20" fill="currentColor" aria-hidden="true">
+			<path d="M135.72 44.03C202.21 93.94 273.72 195.13 300 249.43c26.28-54.3 97.79-155.49 164.28-205.4C512.26 8.04 590-19.84 590 68.84c0 17.71-10.15 148.79-16.11 170.07-20.7 73.98-96.16 92.83-163.25 81.42 117.27 19.95 147.14 86.07 82.72 152.19-122.36 125.59-175.85-31.51-189.54-71.78-2.51-7.38-3.69-10.83-3.71-7.83-.02-3-1.2.45-3.71 7.83-13.69 40.27-67.18 197.37-189.54 71.78-64.42-66.12-34.55-132.24 82.72-152.19-67.09 11.41-142.55-7.57-163.25-81.42C20.15 217.63 10 86.55 10 68.84c0-88.68 77.74-60.8 125.72-24.81z"/>
+		</svg>
+	</a>
+	<a
+		href={githubHref}
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="GitHub profile"
+	>
+		<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+			<path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.06c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.46-2.38 1.24-3.22-.13-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.67.25 2.9.12 3.21.78.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3"/>
+		</svg>
+	</a>
+</div>
+
+<style>
+	.share-band {
+		background: var(--color-rule);
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 1.5em 0;
+		margin-top: 3em;
+		display: flex;
+		justify-content: center;
+		gap: 1.25em;
+	}
+	.share-band a {
+		color: var(--color-ink);
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+	}
+	.share-band a:hover {
+		color: var(--color-accent);
+	}
+</style>

@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+- Changed: Refined theme to match kau.sh visual fingerprint — cool-slate palette, italic-serif (Source Serif 4) prose headings, decorative `##` H2 markers, footnotes as right-margin side notes, `* * *` section dividers, related-posts block, share-this-post buttons on post pages, sharp media corners
+- Added: `src/lib/rehype-sidenotes.mjs` — in-repo rehype plugin that rewrites markdown footnotes into inline `<aside class="side-note">` elements
+- Added: `RelatedPosts.astro` ("You might also enjoy") component, ranked by tag overlap with recency tiebreaker
+- Added: `ShareButtons.astro` row on blog post pages — LinkedIn / X / Bluesky share intents plus a GitHub profile link
+- Added: Interactive `##` section anchors on H2 headings (hover hot-orange; click copies the section URL and flashes a checkmark) via in-repo `rehype-heading-anchors.mjs`
+- Changed: Post-page tail order is now body → tags → share-band → related-posts (matches kau.sh post layout)
+- Fixed: Side-note label now uses the sequential number from the body superscript instead of the raw footnote ID — named footnotes like `[^kaush]` previously rendered as `kaush.` instead of `1.`
+
 ## [0.0.2] — 2026-05-25
 
 Homepage rework to better match the kau.sh-family structure.

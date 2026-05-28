@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+
+type Props = {
+	currentSlug: string;
+	currentTags: string[];
+};
+
+const { currentSlug, currentTags } = Astro.props;
+
+const published = (await getCollection('blog', ({ data }) => !data.draft))
+	.filter((p) => p.id !== currentSlug);
+
+const tagSet = new Set(currentTags);
+const ranked = published
+	.map((p) => ({
+		post: p,
+		score: (p.data.tags ?? []).reduce(
+			(n, t) => (tagSet.has(t) ? n + 1 : n),
+			0,
+		),
+	}))
+	.sort((a, b) => {
+		if (b.score !== a.score) return b.score - a.score;
+		return b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime();
+	});
+
+const hasOverlap = ranked.some((r) => r.score > 0);
+const picks = (hasOverlap ? ranked : ranked.slice().sort(
+	(a, b) => b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime(),
+)).slice(0, 5);
+
+const showSection = published.length >= 1 && picks.length > 0;
+---
+
+{showSection && (
+	<aside class="related">
+		<h2 class="eyebrow">You might also enjoy</h2>
+		<ul>
+			{picks.map(({ post }) => (
+				<li>
+					<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+				</li>
+			))}
+		</ul>
+	</aside>
+)}
+
+<style>
+	.related {
+		margin-top: 2em;
+	}
+	.related .eyebrow {
+		margin-top: 0;
+		font-weight: 700;
+		color: var(--color-ink);
+		font-family: var(--font-atkinson);
+		text-transform: none;
+		letter-spacing: 0;
+		font-size: 1em;
+	}
+	.related ul {
+		list-style: disc;
+		padding-left: 1.5em;
+		margin: 0;
+	}
+	.related li {
+		padding: 0.2em 0;
+	}
+	.related a {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
+	}
+</style>

@@ -5,7 +5,7 @@ pubDate: 'Jun 01 2024'
 tags: ['testing', 'longform', 'walkthrough']
 ---
 
-This post mirrors the kau.sh-style numbered walkthrough — numbered H2 headings with descriptive subtitles, prose under each step, and a closing pull-quote. It exercises the heading scale, nested list rendering, and the visual rhythm of a longer post.
+This post mirrors the kau.sh-style numbered walkthrough[^kaush]  — numbered H2 headings with descriptive subtitles, prose under each step, and a closing pull-quote. It exercises the heading scale, nested list rendering, and the visual rhythm of a longer post.
 
 ## Step 0 — Setting the scene
 
@@ -41,3 +41,5 @@ The third thing we do. By this point the reader should have a feel for the caden
 > The point of the walkthrough is not the steps. It's the rhythm.
 
 A single-sentence paragraph to close the post.
+
+[^kaush]: See Kaushik Gopal's [agent-forking post](https://kau.sh/blog/agent-forking/) for a canonical example — Step 0 framing, numbered concrete actions, closing reflection.

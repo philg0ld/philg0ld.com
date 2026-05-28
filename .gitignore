@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local-only Claude Code settings (project-wide .claude/ files are committed)
+.claude/settings.local.json
