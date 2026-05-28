@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.0.3] — 2026-05-27
+
 - Changed: Refined theme to match kau.sh visual fingerprint — cool-slate palette, italic-serif (Source Serif 4) prose headings, decorative `##` H2 markers, footnotes as right-margin side notes, `* * *` section dividers, related-posts block, share-this-post buttons on post pages, sharp media corners
 - Added: `src/lib/rehype-sidenotes.mjs` — in-repo rehype plugin that rewrites markdown footnotes into inline `<aside class="side-note">` elements
 - Added: `RelatedPosts.astro` ("You might also enjoy") component, ranked by tag overlap with recency tiebreaker
