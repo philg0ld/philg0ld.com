@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Added: `src/lib/rehype-callouts.mjs` — in-repo rehype plugin that transforms blockquotes starting with `[!type] Title` (Obsidian / GFM syntax) into `<blockquote class="callout callout-{type}">` with a styled title row. Recognised types: note, tip, important, warning, caution, info
 - Added: Source Serif 4 weights 500 and 600 italic to the font config
 - Changed: `.prose h1` from italic 700 to italic 500; `.prose h2` from italic 700 to italic 600 — lighter heading rhythm closer to kau.sh
+- Changed: `.eyebrow` font-size 0.85em → 0.65em — small-caps section labels (TOPICS, WRITING) now ~12px, closer to kau.sh's subtle section dividers
+- Changed: `.tag-pill` padding tightened (0.35em 0.7em → 0.2em 0.55em) and font-size 0.8em → 0.75em — tag cloud reads more compact
+- Changed: PostList row padding tightened (0.35em → 0.15em) — tighter vertical rhythm on Writing list
 
 ## [0.0.2] — 2026-05-25
 
