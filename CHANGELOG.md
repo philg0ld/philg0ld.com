@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Changed: PostList row padding tightened (0.35em → 0.15em) — tighter vertical rhythm on Writing list
 - Changed: Home page browser-tab title is now "Phil Goldman's Website" (was "Phil Goldman") — clearer in tab strips
 - Changed: `/blog/` browser-tab title is now "Phil Goldman's blog posts - Phil Goldman's Website" (was "Writing — Phil Goldman") — matches the `<Name>'s blog posts - <Name>'s Website` pattern
+- Removed: `<h1>Writing</h1>` page heading on `/blog/` — page now opens directly with the Topics cloud, matching kau.sh's quieter intro
+- Removed: Year-grouping headings (`#2026`, `#2025`, `#2024`) on `/blog/` — post list is now flat with mono `YYYY-MM` date prefix on each row
 
 ## [0.0.2] — 2026-05-25
 
