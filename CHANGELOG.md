@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Fixed: Side-note label now uses the sequential number from the body superscript instead of the raw footnote ID — named footnotes like `[^kaush]` previously rendered as `kaush.` instead of `1.`
 - Changed: Hover on nav links, prose links, related-post links, and share icons now uses `--color-hot` orange and drops the underline — matches kau.sh's link signature
 - Changed: Section headings (`.prose h2`) now render in italic Source Serif 4 to share H1's typographic rhythm
+- Changed: Related-posts list (`.related ul`) uses kau.sh-style left margin (`0.9em`) instead of bullet-padding indent for tighter alignment under the eyebrow
 
 ## [0.0.2] — 2026-05-25
 
