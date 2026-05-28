@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Changed: `.tag-pill` padding tightened (0.35em 0.7em → 0.2em 0.55em) and font-size 0.8em → 0.75em — tag cloud reads more compact
 - Changed: PostList row padding tightened (0.35em → 0.15em) — tighter vertical rhythm on Writing list
 - Changed: Home page browser-tab title is now "Phil Goldman's Website" (was "Phil Goldman") — clearer in tab strips
+- Changed: `/blog/` browser-tab title is now "Phil Goldman's blog posts - Phil Goldman's Website" (was "Writing — Phil Goldman") — matches the `<Name>'s blog posts - <Name>'s Website` pattern
 
 ## [0.0.2] — 2026-05-25
 
