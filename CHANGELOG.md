@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 ## [Unreleased]
 
 - Added: Drafted VLM document extraction evaluation article with SVG and Excalidraw diagrams
+- Changed: Refined the VLM document extraction hero artwork with editable Excalidraw source
 
 ## [0.0.3] — 2026-05-27
 

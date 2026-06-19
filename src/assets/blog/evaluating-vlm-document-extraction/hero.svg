@@ -1,57 +1,100 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Evaluating VLM document extraction</title>
-  <desc id="desc">Messy PDFs and schemas flow through a production-like extractor into graders and a shipping decision.</desc>
+  <desc id="desc">Messy PDFs and schemas flow through a production-like extractor, mixed graders, and a defensible shipping decision.</desc>
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e7e0d4" stroke-width="1" opacity="0.65"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e7e0d4" stroke-width="1" opacity="0.55"/>
     </pattern>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
-      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#314455" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="arrowhead" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 C5,4.5 7.6,5.8 10.5,6.5 C7.6,7.2 5,8.5 2,11" fill="none" stroke="#314455" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
     <style>
       .bg { fill: #f7f1e8; }
-      .card { fill: #fffaf1; stroke: #314455; stroke-width: 3; rx: 22; }
-      .blue { fill: #d9ecff; }
-      .green { fill: #dff5df; }
-      .yellow { fill: #fff0bf; }
-      .pink { fill: #ffe0df; }
-      .ink { fill: #203040; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-      .title { font-size: 47px; font-weight: 700; }
-      .subtitle { font-size: 24px; fill: #5c6670; }
-      .label { font-size: 25px; font-weight: 700; }
+      .title, .subtitle, .label, .small, .badge, .note {
+        fill: #203040;
+        font-family: Virgil, "Comic Sans MS", "Segoe Print", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      .title { font-size: 45px; font-weight: 700; }
+      .subtitle { font-size: 22px; fill: #5c6670; }
+      .label { font-size: 24px; font-weight: 700; }
       .small { font-size: 18px; fill: #5c6670; }
-      .arrow { fill: none; stroke: #314455; stroke-width: 3; marker-end: url(#arrow); }
+      .badge { font-size: 22px; font-weight: 700; }
+      .note { font-size: 17px; fill: #5c6670; }
+      .arrow { fill: none; stroke: #314455; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrowhead); }
+      .dash { fill: none; stroke: #314455; stroke-width: 2.6; stroke-dasharray: 9 8; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrowhead); }
+      .soft-line { fill: none; stroke: #314455; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; opacity: 0.45; }
+      .cross { fill: none; stroke: #c2410c; stroke-width: 4; stroke-linecap: round; opacity: 0.8; }
     </style>
   </defs>
   <rect width="1200" height="630" class="bg"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
 
-  <text x="70" y="96" class="ink title">Evaluating VLM document extraction</text>
-  <text x="73" y="139" class="ink subtitle">The useful output is not a leaderboard. It is a decision you can defend.</text>
+  <text x="70" y="88" class="title">Evaluating VLM document extraction</text>
+  <text x="73" y="130" class="subtitle">The useful output is not a leaderboard. It is a decision you can defend.</text>
+  <path d="M70 150 C258 144 449 151 640 147" class="soft-line"/>
 
-  <rect x="72" y="240" width="220" height="130" class="card blue"/>
-  <text x="104" y="294" class="ink label">PDFs</text>
-  <text x="104" y="326" class="ink small">unknown location</text>
-  <text x="104" y="352" class="ink small">unknown format</text>
+  <g id="pdfs">
+  <path d="M94,247 C80,246 73,253 74,267 L74,355 C74,370 80,376 94,375 L260,376 C274,376 281,369 280,355 L281,267 C281,253 274,246 260,247 Z" fill="#d9ecff" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M94,244 C79,245 71,252 72,267 L73,355 C73,369 79,378 94,377 L260,378 C275,378 283,370 282,355 L283,267 C283,252 275,245 260,244 Z" fill="none" stroke="#314455" stroke-width="1.35" stroke-linejoin="round" opacity="0.58"/>
+  <text x="102" y="293" class="label">Messy PDFs</text>
+<text x="102" y="327" class="small">
+  <tspan x="102" dy="0">unknown location</tspan>
+  <tspan x="102" dy="27">tables, footnotes,</tspan>
+  <tspan x="102" dy="27">duplicate context</tspan>
+</text>
+</g>
+  <g id="schema">
+  <path d="M344,247 C330,246 323,253 324,267 L324,355 C324,370 330,376 344,375 L510,376 C524,376 531,369 530,355 L531,267 C531,253 524,246 510,247 Z" fill="#fff0bf" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M344,244 C329,245 321,252 322,267 L323,355 C323,369 329,378 344,377 L510,378 C525,378 533,370 532,355 L533,267 C533,252 525,245 510,244 Z" fill="none" stroke="#314455" stroke-width="1.35" stroke-linejoin="round" opacity="0.58"/>
+  <text x="352" y="293" class="label">Known schema</text>
+<text x="352" y="327" class="small">
+  <tspan x="352" dy="0">required fields</tspan>
+  <tspan x="352" dy="27">optional fields</tspan>
+  <tspan x="352" dy="27">versioned truth</tspan>
+</text>
+</g>
+  <path id="a1" d="M282 311 C297 309 307 309 322 311" class="arrow"/>
+  <path id="a2" d="M532 311 C557 306 578 306 606 311" class="arrow"/>
+  <g id="extractor">
+  <path d="M628,222 C614,221 607,228 608,242 L608,380 C608,395 614,401 628,400 L820,401 C834,401 841,394 840,380 L841,242 C841,228 834,221 820,222 Z" fill="#dff5df" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M628,219 C613,220 605,227 606,242 L607,380 C607,394 613,403 628,402 L820,403 C835,403 843,395 842,380 L843,242 C843,227 835,220 820,219 Z" fill="none" stroke="#314455" stroke-width="1.35" stroke-linejoin="round" opacity="0.58"/>
+  <text x="636" y="268" class="label">Production path</text>
+<text x="636" y="302" class="small">
+  <tspan x="636" dy="0">same prompt</tspan>
+  <tspan x="636" dy="27">same parser</tspan>
+  <tspan x="636" dy="27">same repair logic</tspan>
+</text>
+</g>
+  <path id="a3" d="M842 311 C866 306 889 306 916 311" class="arrow"/>
+  <g id="graders">
+  <path d="M938,222 C924,221 917,228 918,242 L918,380 C918,395 924,401 938,400 L1108,401 C1122,401 1129,394 1128,380 L1129,242 C1129,228 1122,221 1108,222 Z" fill="#eadcff" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M938,219 C923,220 915,227 916,242 L917,380 C917,394 923,403 938,402 L1108,403 C1123,403 1131,395 1130,380 L1131,242 C1131,227 1123,220 1108,219 Z" fill="none" stroke="#314455" stroke-width="1.35" stroke-linejoin="round" opacity="0.58"/>
+  <text x="946" y="268" class="label">Mixed graders</text>
+<text x="946" y="302" class="small">
+  <tspan x="946" dy="0">code checks</tspan>
+  <tspan x="946" dy="27">LLM judge</tspan>
+  <tspan x="946" dy="27">human calibration</tspan>
+</text>
+</g>
 
-  <rect x="352" y="240" width="220" height="130" class="card yellow"/>
-  <text x="384" y="294" class="ink label">Schema</text>
-  <text x="384" y="326" class="ink small">known fields</text>
-  <text x="384" y="352" class="ink small">missing is possible</text>
+  <g id="score-card">
+    <path d="M380,470 C378,452 391,438 410,440 L545,442 C563,442 576,455 574,474 L571,539 C570,557 556,570 538,568 L405,565 C388,565 375,551 377,533 Z" fill="#fffaf1" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M397 458 C436 457 478 458 556 462" class="soft-line"/>
+    <text x="409" y="497" class="badge">one score</text>
+    <text x="408" y="529" class="note">looks simple</text>
+    <path d="M397 462 C444 502 492 532 560 554" class="cross"/>
+    <path d="M557 462 C501 501 458 530 394 554" class="cross"/>
+  </g>
 
-  <rect x="632" y="224" width="230" height="162" class="card green"/>
-  <text x="664" y="285" class="ink label">Extractor</text>
-  <text x="664" y="317" class="ink small">production path</text>
-  <text x="664" y="343" class="ink small">raw + parsed output</text>
-
-  <rect x="922" y="224" width="230" height="162" class="card pink"/>
-  <text x="954" y="282" class="ink label">Decision</text>
-  <text x="954" y="316" class="ink small">promote, block,</text>
-  <text x="954" y="342" class="ink small">investigate, tune</text>
-
-  <path d="M292 305 C316 305 326 305 352 305" class="arrow"/>
-  <path d="M572 305 C598 305 608 305 632 305" class="arrow"/>
-  <path d="M862 305 C890 305 894 305 922 305" class="arrow"/>
-
-  <text x="74" y="520" class="ink small">Layers: ground truth · code graders · LLM judge · human calibration · cost/latency · failure taxonomy</text>
+  <path id="a4" d="M574 503 C634 498 682 498 744 503" class="dash"/>
+  <g id="decision">
+  <path d="M766,457 C752,456 745,463 746,477 L746,547 C746,562 752,568 766,567 L1028,568 C1042,568 1049,561 1048,547 L1049,477 C1049,463 1042,456 1028,457 Z" fill="#fed7aa" stroke="#314455" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M766,454 C751,455 743,462 744,477 L745,547 C745,561 751,570 766,569 L1028,570 C1043,570 1051,562 1050,547 L1051,477 C1051,462 1043,455 1028,454 Z" fill="none" stroke="#314455" stroke-width="1.35" stroke-linejoin="round" opacity="0.58"/>
+  <text x="774" y="503" class="label">Defensible decision</text>
+<text x="774" y="537" class="small">
+  <tspan x="774" dy="0">promote · block · investigate</tspan>
+  <tspan x="774" dy="27">clean cohort · tune prompt</tspan>
+</text>
+</g>
+  <text x="75" y="552" class="note">Eval layers: ground truth · parsing · field accuracy · severity · cost/latency · provenance</text>
 </svg>
