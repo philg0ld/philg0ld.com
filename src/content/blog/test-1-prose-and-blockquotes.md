@@ -1,9 +1,12 @@
 ---
-title: 'Prose, links, and blockquotes — visual test'
-description: 'Temporary post for testing prose rhythm, links, inline emphasis, and blockquote styling on the new theme.'
-pubDate: 'Mar 15 2025'
-heroImage: '../../assets/blog/test-1-prose/hero.svg'
-tags: ['testing', 'design']
+title: Prose, links, and blockquotes — visual test
+description: Temporary post for testing prose rhythm, links, inline emphasis, and blockquote styling on the new theme.
+pubDate: Mar 15 2025
+heroImage: ../../assets/blog/test-1-prose/hero.svg
+tags:
+  - testing
+  - design
+draft: true
 ---
 
 This post exists to exercise the prose rhythm of the theme. It has long paragraphs, **bold**, *italic*, [an inline link](https://example.com), a bit of `inline code`, and a blockquote down below.

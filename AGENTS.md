@@ -157,6 +157,6 @@ in the same commit. Pick one category:
 
 Line format: `- <Category>: <one-line description>` (past tense, no trailing period).
 Skip: typos, comment-only edits, internal refactors with no observable effect.
-On release: rename `## [Unreleased]` to `## [X.Y.Z] — YYYY-MM-DD` and add a fresh `## [Unreleased]` above it.
+On release: rename `## [Unreleased]` to `## [X.Y.Z] — YYYY-MM-DD` and add a fresh `## [Unreleased]` above it. Group lines by categories: `**<category>:**`.
 
 Standard: [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) · [SemVer 2.0](https://semver.org/spec/v2.0.0.html)

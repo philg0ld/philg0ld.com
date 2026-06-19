@@ -1,9 +1,12 @@
 ---
-title: 'Hero and inline images — visual test'
-description: 'Temporary post for testing hero image rendering and multiple inline images at the prose column width.'
-pubDate: 'Nov 08 2024'
-heroImage: '../../assets/blog/test-3-images/hero.svg'
-tags: ['testing', 'images']
+title: Hero and inline images — visual test
+description: Temporary post for testing hero image rendering and multiple inline images at the prose column width.
+pubDate: Nov 08 2024
+heroImage: ../../assets/blog/test-3-images/hero.svg
+tags:
+  - testing
+  - images
+draft: true
 ---
 
 This post has a hero image at the top of the layout, then two inline images mid-body, then a closing paragraph.

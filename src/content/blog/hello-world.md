@@ -1,8 +1,10 @@
 ---
-title: 'Hello World'
-description: 'Welcome to philg0ld.com — a blog about Data Engineering, Databricks, Azure, AI/ML, and building with Claude Code.'
-pubDate: 'Apr 26 2026'
-tags: ['general']
+title: Hello World
+description: Welcome to philg0ld.com — a blog about Data Engineering, Databricks, Azure, AI/ML, and building with Claude Code.
+pubDate: Apr 26 2026
+tags:
+  - general
+draft: true
 ---
 
 Welcome to my blog. I'm Phil Goldman — a data engineer working with Databricks, Azure, and AI/ML.

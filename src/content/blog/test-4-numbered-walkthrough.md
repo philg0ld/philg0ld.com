@@ -1,8 +1,12 @@
 ---
-title: 'A numbered walkthrough — visual test'
-description: 'Temporary post for testing longform structure with numbered H2 sections, nested lists, and a closing pull-quote.'
-pubDate: 'Jun 01 2024'
-tags: ['testing', 'longform', 'walkthrough']
+title: A numbered walkthrough — visual test
+description: Temporary post for testing longform structure with numbered H2 sections, nested lists, and a closing pull-quote.
+pubDate: Jun 01 2024
+tags:
+  - testing
+  - longform
+  - walkthrough
+draft: true
 ---
 
 This post mirrors the kau.sh-style numbered walkthrough[^kaush]  — numbered H2 headings with descriptive subtitles, prose under each step, and a closing pull-quote. It exercises the heading scale, nested list rendering, and the visual rhythm of a longer post.

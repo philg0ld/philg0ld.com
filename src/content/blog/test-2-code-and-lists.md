@@ -1,8 +1,11 @@
 ---
-title: 'Code blocks and lists — visual test'
-description: 'Temporary post for testing fenced code blocks (multiple languages), inline code, and ordered/unordered list rendering.'
-pubDate: 'Sep 22 2025'
-tags: ['testing', 'code']
+title: Code blocks and lists — visual test
+description: Temporary post for testing fenced code blocks (multiple languages), inline code, and ordered/unordered list rendering.
+pubDate: Sep 22 2025
+tags:
+  - testing
+  - code
+draft: true
 ---
 
 A short post to look at how code blocks and lists render under the theme. Lists are deceptively load-bearing in technical writing[^lists]  — they're often where readers actually find the answer.
