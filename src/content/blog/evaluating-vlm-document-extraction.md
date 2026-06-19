@@ -9,7 +9,7 @@ tags:
   - document-extraction
   - vlm
   - data-engineering
-draft: true
+draft: false
 ---
 
 I recently worked on a document-extraction problem that seemed simple on paper.
